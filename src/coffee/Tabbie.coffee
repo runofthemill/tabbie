@@ -1,6 +1,6 @@
 class Tabbie
 
-  version: "0.5"
+  version: "1.0"
   editMode: false
 
   constructor: ->
@@ -254,9 +254,9 @@ class Tabbie
       templ.polymerVersion = Polymer.version
       fabanim = document.createElement "fab-anim"
       fabanim.classList.add "fab-anim-about"
-      fabanim.addEventListener "webkitTransitionEnd", ->
-        aboutdialog.toggle ->
-          fabanim.remove()
+
+      aboutdialog.toggle ->
+        fabanim.remove()
 
       document.body.appendChild fabanim
       fabanim.play()
@@ -273,9 +273,8 @@ class Tabbie
     updateFab.addEventListener "click", =>
       fabanim = document.createElement "fab-anim"
       fabanim.classList.add "fab-anim-update"
-      fabanim.addEventListener "webkitTransitionEnd", ->
-        updatediag.toggle ->
-          fabanim.remove()
+      updatediag.toggle ->
+        fabanim.remove()
 
       document.body.appendChild fabanim
       fabanim.play()
@@ -347,7 +346,7 @@ class Tabbie
 
     adddialog.addButton 'add', ->
       chrome.permissions.request
-        origins: ["https://feedly.com/"]
+        origins: ["https://feedly.com/", "http://storage.googleapis.com/"]
       , (granted) =>
         if granted
           search.toggle()
@@ -373,7 +372,6 @@ class Tabbie
     document.querySelector(".fab-add").addEventListener "click", =>
       fabanim = document.createElement "fab-anim"
       fabanim.classList.add "fab-anim-add"
-      fabanim.addEventListener "webkitTransitionEnd", ->
 
       adddialog.toggle ->
         fabanim.remove()
@@ -503,7 +501,7 @@ class Tabbie
     column = new Columns.CustomColumn
       name: feedly.title
       link: feedly.website
-      url: "https://feedly.com/v3/streams/contents?count=20&streamId=" + encodeURIComponent(feedly.feedId) + "&continuation={PAGENUM}"
+      baseUrl: "https://feedly.com/v3/streams/contents?count=20&streamId=" + encodeURIComponent(feedly.feedId) + "&continuation={PAGENUM}"
       thumb: thumb,
       custom: true
 

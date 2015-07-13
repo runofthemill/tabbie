@@ -2,9 +2,9 @@ class Columns.DesignerNews extends Columns.FeedColumn
   name: "DesignerNews"
   width: 1
   thumb: "img/column-designernews.png"
-  link: "https://news.layervault.com/"
+  link: "https://www.designernews.co/"
 
-  url: "https://api-news.layervault.com/api/v2/stories/"
+  url: "https://api.designernews.co/api/v2/stories/"
   element: "dn-item"
   dataPath: "stories"
 
